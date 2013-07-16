@@ -7,12 +7,22 @@
 //
 
 #import "BirdsAppDelegate.h"
+#import "BirdSightingDataController.h"
+#import "BirdsMasterViewController.h"
 
 @implementation BirdsAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    UINavigationController *navicationController = (UINavigationController *)self.window.rootViewController;
+    
+    BirdsMasterViewController *firstViewController = (BirdsMasterViewController *)[[navicationController viewControllers] objectAtIndex:0];
+    
+    BirdSightingDataController *aDataController = [[BirdSightingDataController alloc] init];
+    firstViewController.dataController = aDataController;
+    
     return YES;
 }
 							
