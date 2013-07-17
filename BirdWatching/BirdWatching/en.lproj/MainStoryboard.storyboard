@@ -62,7 +62,13 @@
                             <outlet property="delegate" destination="12" id="15"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bird Sightings" id="36"/>
+                    <navigationItem key="navigationItem" title="Bird Sightings" id="36">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qTE-gY-lNp">
+                            <connections>
+                                <segue destination="Wnb-aW-auA" kind="modal" identifier="ShowAddSightingView" id="KW6-BP-G0j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,7 +201,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2p-Ly-zD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="64"/>
+            <point key="canvasLocation" x="1129" y="64"/>
         </scene>
         <!--Add Sighting View Controller-->
         <scene sceneID="LVx-Y8-4pv">
@@ -226,6 +232,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="pqL-tw-hpA" id="411-6D-CcK"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -255,6 +264,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="pqL-tw-hpA" id="gV6-jk-8Bm"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -275,13 +287,25 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ei5-ZF-25C">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S8i-bk-R3b"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1FT-XQ-v5g"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S8i-bk-R3b">
+                            <connections>
+                                <action selector="cancel:" destination="pqL-tw-hpA" id="WsO-M8-Bdr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1FT-XQ-v5g">
+                            <connections>
+                                <action selector="done:" destination="pqL-tw-hpA" id="FzY-Xq-aUc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="birdNameInput" destination="MHR-eb-NoV" id="Dov-jS-NHX"/>
+                        <outlet property="locationInput" destination="t4j-bk-xf5" id="u44-He-tR1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mp4-GO-E1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="-703"/>
+            <point key="canvasLocation" x="1592" y="-703"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mUz-cj-T4Y">
@@ -299,12 +323,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1Y-aE-Dy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="-703"/>
+            <point key="canvasLocation" x="1134" y="-703"/>
         </scene>
     </scenes>
     <classes>
         <class className="AddSightingViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddSightingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="birdNameInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="locationInput" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="BirdsDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BirdsDetailViewController.h"/>

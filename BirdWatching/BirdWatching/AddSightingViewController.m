@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad
 {
+    [self setBirdNameInput:nil];
+    [self setLocationInput:nil];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -120,4 +122,22 @@
      */
 }
 
+- (IBAction)cancel:(id)sender {
+    [[self delegate] addSightingViewControllerDidCancel:self];
+}
+
+- (IBAction)done:(id)sender {
+    NSLog(@"%@", self.birdNameInput.text);
+    NSLog(@"%@", self.locationInput.text);
+    [[self delegate] addSightingViewControllerDidFinish:self name:self.birdNameInput.text location:self.locationInput.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ((textField == self.birdNameInput) || (textField == self.locationInput)) {
+        
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
 @end
