@@ -25,8 +25,6 @@
 
 - (void)viewDidLoad
 {
-    [self setBirdNameInput:nil];
-    [self setLocationInput:nil];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -115,7 +113,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     DetailViewController *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
@@ -129,13 +127,13 @@
 - (IBAction)done:(id)sender {
     NSLog(@"%@", self.birdNameInput.text);
     NSLog(@"%@", self.locationInput.text);
+    
     [[self delegate] addSightingViewControllerDidFinish:self name:self.birdNameInput.text location:self.locationInput.text];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ((textField == self.birdNameInput) || (textField == self.locationInput)) {
-        
         [textField resignFirstResponder];
     }
     return YES;
